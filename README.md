@@ -418,3 +418,59 @@ Understand what evals are and why observability is essential before shipping.
 | 6 | Cloud Basics for AI | Explain Cloud Run/Lambda and FastAPI deploy steps | GCP Free Tier |  |
 | 7 | Agentic Frameworks + MCP | Explain agent, tool call, MCP in plain English | Google ADK Docs |  |
 | 8 | Production Readiness | Explain evals and observability importance | DeepLearning.AI |  |
+
+---
+
+## Run Instructions
+
+Use these commands from the project root (`Tachyon_Preboarding`).
+
+### 1) Activate Virtual Environment
+
+```powershell
+.\venv\Scripts\Activate.ps1
+```
+
+### 2) Install FastAPI Dependencies
+
+```powershell
+.\venv\Scripts\python.exe -m pip install -r .\FastAPI_Introduction\requirements.txt
+```
+
+### 3) Run All Verified Checks (Recommended)
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\execute_all_projects.ps1
+```
+
+### 4) Run Individual Projects
+
+```powershell
+# Python Basics
+.\venv\Scripts\python.exe .\Python_Basics\main.py
+
+# Docker Fundamentals (local script)
+.\venv\Scripts\python.exe .\Docker_Fundamentals\app.py
+
+# Docker Fundamentals (container build + run)
+docker build -t tachyon-docker-demo .\Docker_Fundamentals
+docker run --rm tachyon-docker-demo
+```
+
+### 5) Run FastAPI Server
+
+```powershell
+.\venv\Scripts\python.exe -m uvicorn FastAPI_Introduction.main:app --reload
+```
+
+Then open:
+- `http://127.0.0.1:8000/docs` (interactive Swagger docs)
+- `http://127.0.0.1:8000/health`
+- `http://127.0.0.1:8000/students`
+
+### 6) Open Frontend Demos in Browser
+
+- `HTML_CSS_JS_Basics/index.html`
+- `ReactJS_Basics/index.html` (expects FastAPI server running on `127.0.0.1:8000`)
+- `React_Router_v7/index.html`
+- `Tailwind_CSS/index.html`
