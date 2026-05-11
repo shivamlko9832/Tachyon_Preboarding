@@ -21,6 +21,16 @@ app.add_middleware(
 students: list[Student] = []
 
 
+@app.get("/")
+def root() -> dict[str, str]:
+    return {
+        "message": "FastAPI Introduction Demo is running",
+        "docs": "/docs",
+        "health": "/health",
+        "students": "/students",
+    }
+
+
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
