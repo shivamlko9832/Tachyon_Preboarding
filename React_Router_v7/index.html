@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>React Router Demo</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-router-dom@6/umd/react-router-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    .layout { display: flex; min-height: 100vh; }
+    nav { width: 220px; background: #f3f4f6; padding: 1rem; }
+    nav a { display: block; margin-bottom: 0.8rem; color: #111827; text-decoration: none; }
+    nav a.active { font-weight: bold; color: #2563eb; }
+    main { padding: 1.5rem; flex: 1; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const {
+      BrowserRouter,
+      NavLink,
+      Routes,
+      Route
+    } = ReactRouterDOM;
+
+    const Home = () => <h2>Home Page</h2>;
+    const About = () => <h2>About Page</h2>;
+    const Contact = () => <h2>Contact Page</h2>;
+
+    function App() {
+      return (
+        <BrowserRouter>
+          <div className="layout">
+            <nav>
+              <h3>Menu</h3>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/about">About</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
+            </nav>
+            <main>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+              </Routes>
+            </main>
+          </div>
+        </BrowserRouter>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
